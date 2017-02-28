@@ -1,8 +1,8 @@
 {
-  "id": "ab7ff8c0-f376-11e6-97d9-f14f573343b7",
-  "name": "checkintogit",
-  "friendlyName": "Check Into Git",
-  "description": "Checks everything under a specified folder into a Git repo",
+  "id": "06ce3be8-f7a2-43d7-9af3-97e1de71399b",
+  "name": "commitgit",
+  "friendlyName": "Commit To Git",
+  "description": "Commits and pushes everything under a specified folder into a Git repo",
   "author": "Dan Stocker",
   "helpMarkDown": "Checks a folder into Git as part of the build/release process.",
   "category": "Utility",
@@ -13,11 +13,11 @@
   "demands": [],
   "version": {
     "Major": "0",
-    "Minor": "5",
-    "Patch": "1"
+    "Minor": "1",
+    "Patch": "0"
   },
   "minimumAgentVersion": "1.95.0",
-  "instanceNameFormat": "Check Into Git",
+  "instanceNameFormat": "Commit to Git",
   "inputs": [
 	{
       "name": "DestinationRepo",

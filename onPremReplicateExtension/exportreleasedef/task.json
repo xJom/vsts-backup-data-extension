@@ -1,10 +1,10 @@
 {
-  "id": "40047990-f2e0-11e6-b9dc-ef6d44635c93",
+  "id": "6125e4ae-1075-4a6f-9569-60a5cce3f2cd",
   "name": "exportreleasedef",
   "friendlyName": "Export Release Definition(s)",
   "description": "Exports some or all release definitions in a project",
   "author": "Dan Stocker",
-  "helpMarkDown": "The exports will be dropped in the current working directory",
+  "helpMarkDown": "The exports will be dropped in the current working directory (in a subfolder if specified)",
   "category": "Utility",
   "visibility": [
     "Build",
@@ -13,7 +13,7 @@
   "demands": [],
   "version": {
     "Major": "0",
-    "Minor": "5",
+    "Minor": "1",
     "Patch": "0"
   },
   "minimumAgentVersion": "1.95.0",

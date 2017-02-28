@@ -1,15 +1,15 @@
 {
     "manifestVersion": 1,
-    "id": "on-prem-replicate-extension",
-    "name": "IP Replicate Tasks",
-    "version": "0.0.30",
+    "id": "backup-data-extension",
+    "name": "Backup data during build or release",
+    "version": "0.1.0",
     "publisher": "danielstocker",
     "targets": [
         {
             "id": "Microsoft.VisualStudio.Services"
         }
     ],    
-    "description": "Tools for replicating source code and definitions to a secondary git repsoitory during build and release.",
+    "description": "A set of build/release tasks that allow you to back up data during each build/release cycle.",
     "categories": [
         "Build and release"
     ],
@@ -18,25 +18,25 @@
     },
     "files": [
         {
-            "path": "gitreplicate"
+            "path": "pullgit"
 		},
 		{
             "path": "exportreleasedef"
         },
 		{
-            "path": "checkintogit"
+            "path": "commitgit"
         }
     ],
     "contributions": [
         {
-            "id": "git-replicate-task",
+            "id": "pull-git",
             "type": "ms.vss-distributed-task.task",
-			"description": "Replicates a Git repo to another Git repo as part of the build/release",
+			"description": "Downloads the contents of a branch of a git repo into the specified folder during the build/release process."
             "targets": [
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "gitreplicate"
+                "name": "pullgit"
             }
         },
         {
@@ -51,14 +51,14 @@
             }
         },
         {
-            "id": "check-into-git",
+            "id": "commit-and-push-to-git",
             "type": "ms.vss-distributed-task.task",
-			"description": "Checks all files under a specified path into a specified Git repository as part of the build/release.",
+			"description": "Commits and pushes all files under a specified path into a specified Git repository as part of the build/release.",
             "targets": [
                 "ms.vss-distributed-task.tasks"
             ],
             "properties": {
-                "name": "checkintogit"
+                "name": "commitgit"
             }
         }
     ]

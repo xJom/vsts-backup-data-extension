@@ -4,7 +4,7 @@ param(
 	[string] $SourceRepoUser,
 	[string] $SourceRepoPass,
 	[string] $Path,
-	[string] $Branch,
+	[string] $Branch
 )
 
 
@@ -20,12 +20,12 @@ $Branch = Get-VstsInput -Name Branch -Require
 
 Write-VstsTaskDebug "Getting $SourceRepo and placing it in $Path" 
 cd $env:SYSTEM_DEFAULTWORKINGDIRECTORY
-if($Path -ne "") {#
+if($Path -ne "") {
     $exists = Test-Path($Path)
     if($exists -eq $false) {
 	
 		try {
-			New-Item $Path
+			New-Item $Path -ItemType Directory
 		} catch {
 			throw ("The drop path specified is either not a valid full or relative path, or the task execution context did not have sufficient permissions to create the path. Drop location: $env:SYSTEM_DEFAULTWORKINGDIRECTORY Path: $Path");
 		}
@@ -80,7 +80,12 @@ Write-VstsTaskVerbose ">> copying files from _gWork to destination"
 cd $env:SYSTEM_DEFAULTWORKINGDIRECTORY
 cd $Path
 $dest = (Get-Item -Path ".\" -Verbose).FullName
-$src = ($env:SYSTEM_DEFAULTWORKINGDIRECTORY + "\_gWork\")
+cd $env:SYSTEM_DEFAULTWORKINGDIRECTORY
+cd "_gWork"
+Remove-Item ".git\" -Force -Recurse
+$src = (Get-Item -Path ".\" -Verbose).FullName
+$src = $src + "\*"
+cd $env:SYSTEM_DEFAULTWORKINGDIRECTORY
 Copy-Item -Path $src -Destination $dest -Recurse -Force
 
 ### remove local repo and return to the drop location

@@ -78,11 +78,23 @@ if($Branch -ne "master") {
 }
 
 ### copy from path into repo
+$dest = ($env:SYSTEM_DEFAULTWORKINGDIRECTORY + "\_gWork")
 cd $env:SYSTEM_DEFAULTWORKINGDIRECTORY
 cd $Path
 $src = (Get-Item -Path ".\" -Verbose).FullName
-$dest = ($env:SYSTEM_DEFAULTWORKINGDIRECTORY + "\_gWork\")
-Copy-Item -Path $src -Destination $dest -Recurse -Force
+
+### avoid infinite recursion
+$src = Get-ChildItem -Path $src -Exclude @("\_gWork","_gWork","\_gWork\","_gWork\")
+
+    foreach($source in $src) {
+        if($source.Attributes -eq "Directory") {
+            Copy-Item -Path $source -Destination ($dest + "\" + $source.Name) -Recurse -Force
+        } else {
+            Copy-Item -Path $source -Destination $dest -Force 
+        }
+    }
+
+
 cd $env:SYSTEM_DEFAULTWORKINGDIRECTORY
 cd "_gWork"
 

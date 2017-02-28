@@ -1,0 +1,65 @@
+{
+    "manifestVersion": 1,
+    "id": "backup-data-extension",
+    "name": "Backup data during build or release",
+    "version": "0.1.0",
+    "publisher": "danielstocker",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "A set of build/release tasks that allow you to back up data during each build/release cycle.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "pullgit"
+		},
+		{
+            "path": "exportreleasedef"
+        },
+		{
+            "path": "commitgit"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "pull-git",
+            "type": "ms.vss-distributed-task.task",
+			"description": "Downloads the contents of a branch of a git repo into the specified folder during the build/release process."
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "pullgit"
+            }
+        },
+        {
+            "id": "export-release-def",
+            "type": "ms.vss-distributed-task.task",
+			"description": "Exports all release definitions that match a name filter to the default drop folder for the build/release.",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "exportreleasedef"
+            }
+        },
+        {
+            "id": "commit-and-push-to-git",
+            "type": "ms.vss-distributed-task.task",
+			"description": "Commits and pushes all files under a specified path into a specified Git repository as part of the build/release.",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "commitgit"
+            }
+        }
+    ]
+}

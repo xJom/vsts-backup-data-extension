@@ -1,0 +1,65 @@
+{
+    "manifestVersion": 1,
+    "id": "on-prem-replicate-extension",
+    "name": "IP Replicate Tasks",
+    "version": "0.0.30",
+    "publisher": "danielstocker",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],    
+    "description": "Tools for replicating source code and definitions to a secondary git repsoitory during build and release.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/extension-icon.png"        
+    },
+    "files": [
+        {
+            "path": "gitreplicate"
+		},
+		{
+            "path": "exportreleasedef"
+        },
+		{
+            "path": "checkintogit"
+        }
+    ],
+    "contributions": [
+        {
+            "id": "git-replicate-task",
+            "type": "ms.vss-distributed-task.task",
+			"description": "Replicates a Git repo to another Git repo as part of the build/release",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "gitreplicate"
+            }
+        },
+        {
+            "id": "export-release-def",
+            "type": "ms.vss-distributed-task.task",
+			"description": "Exports all release definitions that match a name filter to the default drop folder for the build/release.",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "exportreleasedef"
+            }
+        },
+        {
+            "id": "check-into-git",
+            "type": "ms.vss-distributed-task.task",
+			"description": "Checks all files under a specified path into a specified Git repository as part of the build/release.",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "checkintogit"
+            }
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "buildtask",
+  "version": "1.0.0",
+  "main": "sample.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vso-task-lib": "^0.5.5"
+  },
+  "devDependencies": {},
+  "description": ""
+}

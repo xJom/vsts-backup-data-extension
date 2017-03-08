@@ -31,7 +31,7 @@
         {
             "id": "pull-git",
             "type": "ms.vss-distributed-task.task",
-			"description": "Downloads the contents of a branch of a git repo into the specified folder during the build/release process."
+			"description": "Downloads the contents of a branch of a git repo into the specified folder during the build/release process.",
             "targets": [
                 "ms.vss-distributed-task.tasks"
             ],

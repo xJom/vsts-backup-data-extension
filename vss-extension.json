@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "backup-data-extension",
     "name": "Backup data during build or release",
-    "version": "0.1.<minor>",
+    "version": "0.1.0",
     "publisher": "danielstocker",
     "targets": [
         {

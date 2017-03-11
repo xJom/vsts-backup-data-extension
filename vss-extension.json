@@ -16,6 +16,9 @@
     "icons": {
         "default": "images/extension-icon.png"        
     },
+	"galleryFlags": [
+		"Public"
+	],
 	"tags": [
 		"utility",
 		"git",
@@ -43,7 +46,7 @@
 		}
 	},
 	"branding": {
-		"color": "rgb(153, 217, 234)",
+		"color": "rgb(240, 240, 240)",
 		"theme": "light"
 	},
     "files": [

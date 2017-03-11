@@ -7,9 +7,9 @@ A collection of VSTS build tasks that allow you to backup data from VSTS during 
 
 - Source Repo URI
 - Username 
--- if required
+  - if required
 - Password 
--- if required (also supports PAT)
+  - if required (also supports PAT)
 - Source Branch 
 - Drop dir
 
@@ -17,9 +17,9 @@ A collection of VSTS build tasks that allow you to backup data from VSTS during 
 
 - Destination Repo URI
 - Username 
--- if required
+  - if required
 - Password 
--- if required (also supports PAT)
+  - if required (also supports PAT)
 - Destination Branch
 - Git user name and e-mail 
 - Commit Message 
@@ -29,9 +29,9 @@ A collection of VSTS build tasks that allow you to backup data from VSTS during 
 
 - API endpoint URI
 - Username 
--- if targeting TFS 2015
+  - if targeting TFS 2015
 - Password or PAT 
--- if targeting TFS 2017 or VSTS
+  - if targeting TFS 2017 or VSTS
 - Filter
--- simple "Contains" filter to narrow the amoutn of definitions downloaded
+  - simple "Contains" filter to narrow the amoutn of definitions downloaded
 - Drop dir

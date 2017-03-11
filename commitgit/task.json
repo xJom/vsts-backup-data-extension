@@ -40,8 +40,8 @@
       "type": "string",
       "label": "Destination Repo Password or PAT",
       "defaultValue": "",
-      "required": true,
-      "helpMarkDown": "The password or personal access token for the source repository."
+      "required": false,
+      "helpMarkDown": "The password or personal access token for the source repository. (if required)"
     },
 	{
       "name": "Branch",
@@ -50,6 +50,22 @@
       "defaultValue": "master",
       "required": true,
       "helpMarkDown": "Specify the branch for the commit"
+    },
+	{
+      "name": "CommitUserName",
+      "type": "string",
+      "label": "Commit User Name",
+      "defaultValue": "VSO.Agent",
+      "required": true,
+      "helpMarkDown": "Specify the user name that should be used for the commit."
+    },
+	{
+      "name": "CommitEMail",
+      "type": "string",
+      "label": "Commit User e-mail address",
+      "defaultValue": "vso.agent@gitcommit.com",
+      "required": true,
+      "helpMarkDown": "Specify the e-mail address that should appear against the commit."
     },
 	{
       "name": "CommitMessage",

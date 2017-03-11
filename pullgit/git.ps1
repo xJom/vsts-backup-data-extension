@@ -14,7 +14,7 @@ cd $env:SYSTEM_DEFAULTWORKINGDIRECTORY
 
 $SourceRepo = Get-VstsInput -Name SourceRepo -Require 
 $SourceRepoUser = Get-VstsInput -Name SourceRepoUser
-$SourceRepoPass = Get-VstsInput -Name SourceRepoPass -Require 
+$SourceRepoPass = Get-VstsInput -Name SourceRepoPass 
 $Path = Get-VstsInput -Name Path
 $Branch = Get-VstsInput -Name Branch -Require
 
@@ -49,10 +49,21 @@ if($LASTEXITCODE -ne 0) {
 Write-VstsTaskVerbose ">>git remote add source $SourceRepo"
 
 $source = ""
-if($SourceRepoUser -eq "") {
+if(($SourceRepoUser -eq "") -and ($SourceRepoPass -eq "")) {
+    
+    # no credentials - just URI
+    $source = $SourceRepo
+
+} elseif($SourceRepoUser -eq "") {
+    
+    # no user name - just PAT or password
     $source = $SourceRepo.Replace("//", "//" + $SourceRepoPass + "@")
+
 } else {
+
+    # traditional credentials 
     $source = $SourceRepo.Replace("//", "//" + $SourceRepoUser + ":" + $SourceRepoPass + "@")
+
 }
 
 git remote add source $source

@@ -4,6 +4,8 @@ param(
 	[string] $DestinationRepoUser,
 	[string] $DestinationRepoPass,
 	[string] $Branch,
+    [string] $CommitUserName,
+    [string] $CommitEMail,
     [string] $CommitMessage,
     [string] $Path
 )
@@ -13,8 +15,10 @@ Trace-VstsEnteringInvocation $MyInvocation
 
 $DestinationRepo = Get-VstsInput -Name DestinationRepo -Require 
 $DestinationRepoUser = Get-VstsInput -Name DestinationRepoUser
-$DestinationRepoPass = Get-VstsInput -Name DestinationRepoPass -Require 
+$DestinationRepoPass = Get-VstsInput -Name DestinationRepoPass 
 $Branch = Get-VstsInput -Name Branch -Require
+$CommitUserName = Get-VstsInput -Name CommitUserName -Require
+$CommitEMail = Get-VstsInput -Name CommitEMail -Require
 $CommitMessage = Get-VstsInput -Name CommitMessage -Require
 $Path = Get-VstsInput -Name Path
 
@@ -47,10 +51,22 @@ Write-VstsTaskVerbose ">>git remote add destination $DestinationRepo"
 
 $dest = ""
 $destParts = $DestinationRepo.Split("//")
-if($DestinationRepoUser -eq "") {
+
+if(($DestinationRepoPass -eq "") -and ($DestinationRepoUser -eq "")) {
+    
+    # no credentials - just use uri
+    $dest = $DestinationRepo
+
+} elseif($DestinationRepoUser -eq "") {
+    
+    # no user - just pat or password
     $dest = $DestinationRepo.Replace("//", "//" + $DestinationRepoPass + "@")
+
 } else {
+
+    # user and password
     $dest = $DestinationRepo.Replace("//", "//" + $DestinationRepoUser + ":" + $DestinationRepoPass + "@")
+
 }
 
 git remote add destination $dest
@@ -59,7 +75,17 @@ if($LASTEXITCODE -ne 0) {
     throw ("Could not configure destination.");
 }
 
-git config --global user.name "VSO.Agent"
+### set user id
+Write-VstsTaskVerbose ">> git config --global user.email $CommitEMail"
+Write-VstsTaskVerbose ">> git config --global user.name $CommitUserName"
+
+git config --global user.email $CommitEMail
+
+if($LASTEXITCODE -ne 0) {
+    throw ("Could not configure e-mail address.");
+}
+
+git config --global user.name $CommitUserName
 
 if($LASTEXITCODE -ne 0) {
     throw ("Could not configure name.");

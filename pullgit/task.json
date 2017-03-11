@@ -40,8 +40,8 @@
       "type": "string",
       "label": "Repo Password or PAT",
       "defaultValue": "",
-      "required": true,
-      "helpMarkDown": "The password or personal access token for the source repository."
+      "required": false,
+      "helpMarkDown": "The password or personal access token for the source repository. (if required)"
     },
 	{
       "name": "Branch",

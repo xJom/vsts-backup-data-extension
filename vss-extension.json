@@ -16,23 +16,23 @@
     "icons": {
         "default": "images/extension-icon.png"        
     },
-	"tags": {
+	"tags": [
 		"utility",
 		"git",
 		"compliance",
 		"data",
 		"backup"
-	},
-	"screenshots": {
+	],
+	"screenshots": [
 		{
 			"path": "images/taskScreenshot.png"
 		}
-	},
+	],
 	"content": {
 		"details": {
 			"path": "overview.md"
 		}
-	}
+	},
 	"repository": {
 		"type": "git",
 		"uri": "https://github.com/danielstocker/vsts-backup-data-extension"

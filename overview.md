@@ -59,4 +59,3 @@ Available on GitHub
 - Filter
   - simple "Contains" filter to narrow the amoutn of definitions downloaded
 - Drop dir
-- Drop dir

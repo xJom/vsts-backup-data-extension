@@ -7,6 +7,7 @@ param(
 	[string] $Branch
 )
 
+$env:GIT_REDIRECT_STDERR = '2>&1'
 
 Trace-VstsEnteringInvocation $MyInvocation
 
